@@ -17,6 +17,24 @@ function pass(message) {
   console.log(`OK   ${message}`);
 }
 
+function validateManifestEntry(entry) {
+  const requiredFields = ["id", "name", "path", "category", "language", "riskLevel", "summary"];
+
+  for (const field of requiredFields) {
+    if (typeof entry[field] !== "string" || entry[field].trim() === "") {
+      fail(`manifest entry ${entry.id ?? "(missing id)"} needs ${field}`);
+    }
+  }
+
+  if (entry.language && entry.language !== "zh-CN") {
+    fail(`manifest entry ${entry.id} has unsupported language: ${entry.language}`);
+  }
+
+  if (entry.riskLevel && !["low", "medium", "high"].includes(entry.riskLevel)) {
+    fail(`manifest entry ${entry.id} has unsupported riskLevel: ${entry.riskLevel}`);
+  }
+}
+
 for (const file of requiredFiles) {
   const fullPath = path.join(root, file);
   fs.existsSync(fullPath) ? pass(`${file} exists`) : fail(`${file} is missing`);
@@ -31,6 +49,11 @@ if (!fs.existsSync(manifestPath)) {
     pass("skill-manifest.json is valid JSON");
     if (!Array.isArray(manifest.skills) || manifest.skills.length === 0) {
       fail("skill-manifest.json must include a non-empty skills array");
+    } else {
+      for (const entry of manifest.skills) {
+        validateManifestEntry(entry);
+      }
+      pass("skill-manifest.json entries include required fields");
     }
   } catch (error) {
     fail(`skill-manifest.json is invalid JSON: ${error.message}`);
