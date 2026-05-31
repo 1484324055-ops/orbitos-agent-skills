@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "orbitos-agent-skills",
+  "description": "Reusable agent skills for Chinese knowledge workers, creators, and Obsidian-based personal operating systems.",
+  "license": "MIT",
+  "homepage": "https://github.com/1484324055-ops/orbitos-agent-skills",
+  "skills": [
+    {
+      "id": "saodust",
+      "name": "Saodust",
+      "path": "skills/saodust/SKILL.md",
+      "category": "knowledge-management",
+      "language": "zh-CN",
+      "riskLevel": "medium",
+      "summary": "Scans an Obsidian vault for knowledge-base health signals and produces an actionable report."
+    },
+    {
+      "id": "write",
+      "name": "Write",
+      "path": "skills/write/SKILL.md",
+      "category": "content-workflow",
+      "language": "zh-CN",
+      "riskLevel": "low",
+      "summary": "Turns a rough idea into a structured Chinese long-form article workflow with source separation."
+    },
+    {
+      "id": "four-platform-daily-content",
+      "name": "Four Platform Daily Content",
+      "path": "skills/four-platform-daily-content/SKILL.md",
+      "category": "content-workflow",
+      "language": "zh-CN",
+      "riskLevel": "low",
+      "summary": "Adapts one source into WeChat, Xiaohongshu, X, and Douyin-ready content drafts."
+    }
+  ]
+}

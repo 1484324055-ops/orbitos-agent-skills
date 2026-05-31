@@ -3,7 +3,8 @@ import path from "node:path";
 
 const root = process.cwd();
 const skillsDir = path.join(root, "skills");
-const requiredFiles = ["README.md", "LICENSE", "CONTRIBUTING.md", "CHANGELOG.md", "NOTICE.md"];
+const manifestPath = path.join(root, "skill-manifest.json");
+const requiredFiles = ["README.md", "LICENSE", "CONTRIBUTING.md", "CHANGELOG.md", "NOTICE.md", "SECURITY.md"];
 
 let failed = false;
 
@@ -19,6 +20,21 @@ function pass(message) {
 for (const file of requiredFiles) {
   const fullPath = path.join(root, file);
   fs.existsSync(fullPath) ? pass(`${file} exists`) : fail(`${file} is missing`);
+}
+
+let manifest = null;
+if (!fs.existsSync(manifestPath)) {
+  fail("skill-manifest.json is missing");
+} else {
+  try {
+    manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    pass("skill-manifest.json is valid JSON");
+    if (!Array.isArray(manifest.skills) || manifest.skills.length === 0) {
+      fail("skill-manifest.json must include a non-empty skills array");
+    }
+  } catch (error) {
+    fail(`skill-manifest.json is invalid JSON: ${error.message}`);
+  }
 }
 
 if (!fs.existsSync(skillsDir)) {
@@ -44,6 +60,17 @@ if (!fs.existsSync(skillsDir)) {
     if (!content.includes("## Workflow")) fail(`${skill.name}/SKILL.md should include a Workflow section`);
     if (!content.includes("## Output")) fail(`${skill.name}/SKILL.md should include an Output section`);
     fs.existsSync(readmeFile) ? pass(`${skill.name}/README.md exists`) : fail(`${skill.name}/README.md is missing`);
+
+    if (manifest?.skills) {
+      const item = manifest.skills.find((entry) => entry.id === skill.name);
+      if (!item) {
+        fail(`${skill.name} is missing from skill-manifest.json`);
+      } else if (!fs.existsSync(path.join(root, item.path))) {
+        fail(`${skill.name} manifest path does not exist: ${item.path}`);
+      } else {
+        pass(`${skill.name} manifest entry exists`);
+      }
+    }
   }
 }
 

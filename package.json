@@ -1,8 +1,16 @@
 {
   "name": "orbitos-agent-skills",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "Reusable agent skills for Chinese knowledge workers, creators, and Obsidian-based personal operating systems.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1484324055-ops/orbitos-agent-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1484324055-ops/orbitos-agent-skills/issues"
+  },
+  "homepage": "https://github.com/1484324055-ops/orbitos-agent-skills#readme",
   "scripts": {
     "test": "node scripts/validate.mjs"
   },

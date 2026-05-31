@@ -2,6 +2,10 @@
 
 Reusable agent skills for Chinese knowledge workers, creators, and Obsidian-based personal operating systems.
 
+[![Validate Skills](https://github.com/1484324055-ops/orbitos-agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/1484324055-ops/orbitos-agent-skills/actions/workflows/validate.yml)
+[![Release](https://img.shields.io/github/v/release/1484324055-ops/orbitos-agent-skills)](https://github.com/1484324055-ops/orbitos-agent-skills/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 This repository contains a small, privacy-safe set of original skills extracted from the OrbitOS workflow. The goal is to turn repeatable AI-assisted work into portable skills that can be used by agents such as Codex, Claude Code, OpenCode, and other `SKILL.md` compatible tools.
 
 ## Why This Exists
@@ -58,6 +62,8 @@ Turn this note into WeChat, Xiaohongshu, X, and Douyin versions.
 
 See [`examples/`](examples/) for complete examples.
 
+For English-speaking contributors, see [`examples/english-quickstart.md`](examples/english-quickstart.md).
+
 ## Design Principles
 
 - **Privacy first**: the public skills do not include private vault paths, customer data, or personal voice corpora.
@@ -73,6 +79,24 @@ See [`docs/design-principles.md`](docs/design-principles.md) for details.
 These skills are plain Markdown `SKILL.md` files. They are intended to work with agent systems that support local skills or instruction bundles.
 
 See [`docs/compatibility.md`](docs/compatibility.md).
+
+## Project Metadata
+
+The repository includes a lightweight [`skill-manifest.json`](skill-manifest.json) so agents and tooling can discover the public skills without parsing the full README.
+
+## Security And Privacy
+
+Security and privacy notes are documented in:
+
+- [`docs/security-review.md`](docs/security-review.md)
+- [`docs/privacy.md`](docs/privacy.md)
+- [`SECURITY.md`](SECURITY.md)
+
+## Maintenance
+
+See [`docs/maintenance-plan.md`](docs/maintenance-plan.md) and [`docs/starter-issues.md`](docs/starter-issues.md) for current maintenance priorities.
+
+For Codex-style maintenance workflows, see [`docs/codex-usage.md`](docs/codex-usage.md).
 
 ## License
 
