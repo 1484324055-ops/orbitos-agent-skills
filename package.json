@@ -1,6 +1,6 @@
 {
   "name": "orbitos-agent-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Reusable agent skills for Chinese knowledge workers, creators, and Obsidian-based personal operating systems.",
   "repository": {
