@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 - 2026-05-31
 
 - Added `skill-manifest.json` for machine-readable skill discovery.
 - Added Codex usage notes, security review notes, starter issues, and maintenance plan.
